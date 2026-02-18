@@ -56,12 +56,13 @@ Separation of concerns ensures maintainability and scalability.
 
 ## 📦 Project Structure
 
-'''
+``` 
 EventManagementSystem
-├── src/main/java # Backend source code
-├── src/main/resources # Config & static frontend files
-└── pom.xml # Maven configuration
-'''
+ ├── src/main/java        # Backend source code
+ ├── src/main/resources   # Config & static frontend files
+ └── pom.xml              # Maven configuration
+```
+
 
 ---
 
@@ -94,7 +95,15 @@ For production scalability, JWT-based authentication can be integrated.
 
 ---
 
+## Screenshots
+<img width="1075" height="743" alt="Screenshot 2026-02-18 at 5 48 36 PM" src="https://github.com/user-attachments/assets/d54bfe62-346c-4ba8-a0f8-7402df010074" />
+<img width="878" height="789" alt="Screenshot 2026-02-18 at 5 50 47 PM" src="https://github.com/user-attachments/assets/551fb16d-5f24-4650-9e98-ccb5105a8e58" />
+<img width="972" height="838" alt="Screenshot 2026-02-18 at 5 51 18 PM" src="https://github.com/user-attachments/assets/ce657891-7a68-402d-b575-6b5a81204c79" />
+<img width="939" height="761" alt="Screenshot 2026-02-18 at 5 51 52 PM" src="https://github.com/user-attachments/assets/82576858-9170-4fea-85f4-84c983056cbd" />
+
+
+
 ## 👨‍💻 Author
 
 Rajeev Ranjan  
-Backend-focused Software Engineer
+Backend Foucused Software Engineer(Java)
