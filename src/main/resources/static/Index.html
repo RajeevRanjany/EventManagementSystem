@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Dashboard</title>
+    <style>
+        body { font-family: Arial; margin: 40px; }
+        input, button { margin: 5px; padding: 5px; }
+        .event { border: 1px solid #ccc; padding: 10px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+
+<h2>Event Management Dashboard</h2>
+
+<h3>Register User</h3>
+<input id="regName" placeholder="Name">
+<input id="regEmail" placeholder="Email">
+<input id="regPassword" placeholder="Password">
+<select id="regRole">
+    <option value="USER">USER</option>
+    <option value="ORGANIZER">ORGANIZER</option>
+</select>
+<button onclick="registerUser()">Register</button>
+
+<h3>Login</h3>
+<input id="loginEmail" placeholder="Email">
+<input id="loginPassword" placeholder="Password">
+<button onclick="login()">Login</button>
+
+<h3>Events</h3>
+<button onclick="loadEvents()">Load Events</button>
+
+<div id="events"></div>
+
+<script>
+
+    let currentUserId = null;
+
+    function registerUser() {
+        fetch("/users/register", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                name: document.getElementById("regName").value,
+                email: document.getElementById("regEmail").value,
+                password: document.getElementById("regPassword").value,
+                role: document.getElementById("regRole").value
+            })
+        })
+            .then(res => res.json())
+            .then(data => alert("User Registered with ID: " + data.id));
+    }
+
+    function login() {
+        fetch("/users/login", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                email: document.getElementById("loginEmail").value,
+                password: document.getElementById("loginPassword").value
+            })
+        })
+            .then(res => res.text())
+            .then(data => {
+                alert(data);
+            });
+    }
+
+    function loadEvents() {
+        fetch("/events")
+            .then(res => res.json())
+            .then(events => {
+                let container = document.getElementById("events");
+                container.innerHTML = "";
+                events.forEach(event => {
+                    container.innerHTML += `
+                    <div class="event">
+                        <h4>${event.title}</h4>
+                        <p>${event.description}</p>
+                        <p>Date: ${event.eventDate}</p>
+                        <p>Capacity: ${event.currentRegistrations}/${event.maxCapacity}</p>
+                        <button onclick="registerEvent(${event.id})">Register</button>
+                        <button onclick="checkCount(${event.id})">Check Count</button>
+                    </div>
+                `;
+                });
+            });
+    }
+
+    function registerEvent(eventId) {
+        let userId = prompt("Enter your User ID to register:");
+        fetch(`/registrations/${eventId}/user/${userId}`, {
+            method: "POST"
+        })
+            .then(res => res.text())
+            .then(data => alert(data));
+    }
+
+    function checkCount(eventId) {
+        fetch(`/registrations/count/${eventId}`)
+            .then(res => res.text())
+            .then(data => alert("Current Registrations: " + data));
+    }
+
+</script>
+
+</body>
+</html>
