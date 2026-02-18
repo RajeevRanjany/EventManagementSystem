@@ -86,6 +86,47 @@ For production scalability, JWT-based authentication can be integrated.
 
 ---
 
+## 🔧 How to Run the Project
+
+### Prerequisites
+- Java 17+
+- Maven
+
+### Steps
+
+1. Clone the repository:
+
+git clone https://github.com/RajeevRanjany/EventManagementSystem.git
+
+2. Navigate into the project directory:
+
+3. Run the application:
+
+4. Open browser:
+
+The application will start on port 8080.
+
+---
+
+## 📡 API Endpoints
+
+### User
+- POST `/users/register`
+- POST `/users/login`
+
+### Events
+- POST `/events/{organizerId}`
+- GET `/events`
+
+### Registration
+- POST `/registrations/{eventId}/user/{userId}`
+- GET `/registrations/count/{eventId}`
+
+### UI
+- http://localhost:8080/
+  
+
+
 ## 📈 Future Improvements
 
 - JWT-based stateless authentication
@@ -101,6 +142,9 @@ For production scalability, JWT-based authentication can be integrated.
 <img width="972" height="838" alt="Screenshot 2026-02-18 at 5 51 18 PM" src="https://github.com/user-attachments/assets/ce657891-7a68-402d-b575-6b5a81204c79" />
 <img width="939" height="761" alt="Screenshot 2026-02-18 at 5 51 52 PM" src="https://github.com/user-attachments/assets/82576858-9170-4fea-85f4-84c983056cbd" />
 
+## 🎥 Video Demonstration
+
+Demo Video: https://drive.google.com/file/d/1sN2fSPBiAWiI79vhhIWczzCVVkeCA1vU/view?usp=sharing
 
 
 ## 👨‍💻 Author
